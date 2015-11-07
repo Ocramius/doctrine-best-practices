@@ -4,19 +4,19 @@ class User
     private $username;
     private $password;
 
-    public function getUsername() {
+    public function getUsername() :string {
         return $this->username;
     }
 
-    public function setUsername($username) {
+    public function setUsername(string $username) {
         $this->username = $username;
     }
 
-    public function getPassword() {
+    public function getPassword() : string {
         return $this->password;
     }
 
-    public function setPassword($password) {
+    public function setPassword(string $password) {
         $this->password = $password;
     }
 }
