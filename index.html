@@ -289,8 +289,7 @@
                 
                     
                         <section><pre><code data-trim>
-class User
-{
+class User {
     private $username;
     private $password;
 
@@ -350,24 +349,24 @@ class User
                 
                     
                         <section><pre><code data-trim>
-class User
-{
+class User {
     private $banned;
     private $username;
     private $passwordHash;
 
-    public function toNickname() : string
-    {
+    public function toNickname() : string {
         return $this->username;
     }
 
-    public function authenticate(string $pass, callable $hashCheck) : bool {
-        return $hashCheck($pass, $this->passwordHash)
+    public function authenticate(
+        string $pass, callable $checkHash
+    ) : bool {
+        return $checkHash($pass, $this->passwordHash)
             && ! $this->hasActiveBans();
     }
 
-    public function changePassword(string $pass, callable $hashingAlgo) {
-        $this->passwordHash = $hashingAlgo($pass);
+    public function changePass(string $pass, callable $hash) {
+        $this->passwordHash = $hash($pass);
     }
 }
 </code></pre></section>
@@ -376,7 +375,14 @@ class User
                     
                 
                     
-                        <section><h2><span class="php-color">No behavior</span> = no need for the <span class="doctrine-color">ORM</span></h2></section>
+                        <section><h2>
+    <span class="php-color">No behavior</span>
+    <br/>
+    <strong>=</strong>
+    <br/>
+    no need for the <span class="doctrine-color">ORM</span>
+</h2>
+</section>
 
                     
                     
@@ -434,7 +440,15 @@ class User
                     
                 
                     
-                        <section><h2><strong>Disallow</strong> <span class="doctrine-color">Collection</span> access from outside the <span class="doctrine-color">Entity</span></h2></section>
+                        <section><h2>
+    <strong>Disallow</strong>
+    <br/>
+    <span class="doctrine-color">Collection</span> access
+    <br/>
+    from outside the
+    <span class="doctrine-color">Entity</span>
+</h2>
+</section>
 
                     
                     
@@ -733,8 +747,11 @@ class PrivateMessage
     private $message;
     private $read = [];
 
-    public function __construct(User $from, User $to, $message)
-    {
+    public function __construct(
+        User $from,
+        User $to,
+        string $message
+    ) {
         // ...
     }
 
@@ -950,7 +967,9 @@ final class UserRepository
                         <section><pre><code data-trim>
 final class UsersThatHaveAMonthlySubscription
 {
-    public function __construct(EntityManagerInterface $em) { ... }
+    public function __construct(EntityManagerInterface $em) {
+        // ...
+    }
 
     public function __invoke() : Traversable
     {
