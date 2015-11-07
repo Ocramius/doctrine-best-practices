@@ -5,18 +5,19 @@ class User
     private $username;
     private $passwordHash;
 
-    public function toNickname() : string
-    {
+    public function toNickname() : string {
         return $this->username;
     }
 
-    public function authenticate(string $pass, callable $hashCheck) : bool {
-        return $hashCheck($pass, $this->passwordHash)
+    public function authenticate(
+        string $pass, callable $checkHash
+    ) : bool {
+        return $checkHash($pass, $this->passwordHash)
             && ! $this->hasActiveBans();
     }
 
-    public function changePassword(string $pass, callable $hashingAlgo) {
-        $this->passwordHash = $hashingAlgo($pass);
+    public function changePass(string $pass, callable $hash) {
+        $this->passwordHash = $hash($pass);
     }
 }
 </code></pre>
