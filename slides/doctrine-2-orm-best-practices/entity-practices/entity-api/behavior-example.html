@@ -5,12 +5,12 @@ class User
     private $username;
     private $passwordHash;
 
-    public function toNickname()
+    public function toNickname() : string
     {
         return $this->username;
     }
 
-    public function authenticate($pass, callable $hashCheck) {
+    public function authenticate($pass, callable $hashCheck) : bool {
         return $hashCheck($pass, $this->passwordHash)
             && ! $this->hasActiveBans();
     }
