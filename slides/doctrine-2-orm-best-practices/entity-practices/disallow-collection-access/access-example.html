@@ -10,7 +10,7 @@ class User
 </code></pre>
 
 <pre><code data-trim>
-public function banUser($userId)
+public function banUser(Uuid $userId)
 {
     $user = $this->repository->find($userId);
 
