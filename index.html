@@ -294,19 +294,19 @@ class User
     private $username;
     private $password;
 
-    public function getUsername() {
+    public function getUsername() :string {
         return $this->username;
     }
 
-    public function setUsername($username) {
+    public function setUsername(string $username) {
         $this->username = $username;
     }
 
-    public function getPassword() {
+    public function getPassword() : string {
         return $this->password;
     }
 
-    public function setPassword($password) {
+    public function setPassword(string $password) {
         $this->password = $password;
     }
 }
@@ -356,17 +356,17 @@ class User
     private $username;
     private $passwordHash;
 
-    public function toNickname()
+    public function toNickname() : string
     {
         return $this->username;
     }
 
-    public function authenticate($pass, callable $hashCheck) {
+    public function authenticate(string $pass, callable $hashCheck) : bool {
         return $hashCheck($pass, $this->passwordHash)
             && ! $this->hasActiveBans();
     }
 
-    public function changePassword($pass, callable $hashingAlgo) {
+    public function changePassword(string $pass, callable $hashingAlgo) {
         $this->passwordHash = $hashingAlgo($pass);
     }
 }
@@ -392,11 +392,11 @@ class User
 class User
 {
     // ...
-    public function hasAccessTo($resource)
+    public function hasAccessTo(Resource $resource) : bool
     {
         return (bool) array_filter(
             $this->role->getAccessLevels(),
-            function (AccessLevel $acl) use ($resource) {
+            function (AccessLevel $acl) use ($resource) : bool {
                 return $acl->canAccess($resource)
             }
         );
@@ -412,7 +412,7 @@ class User
 class User
 {
     // ...
-    public function hasAccessTo($resource)
+    public function hasAccessTo(Resource $resource) : bool
     {
         return $this->role->allowsAccessTo($resource);
     }
@@ -445,14 +445,14 @@ class User
 {
     private $bans;
 
-    public function getBans() {
+    public function getBans() : Collection {
         return $this->bans;
     }
 }
 </code></pre>
 
 <pre><code data-trim>
-public function banUser($userId)
+public function banUser(Uuid $userId)
 {
     $user = $this->repository->find($userId);
 
@@ -483,7 +483,7 @@ class User
 </code></pre>
 
 <pre><code data-trim>
-public function banUser($userId)
+public function banUser(Uuid $userId)
 {
     $user = $this->repository->find($userId);
 
@@ -952,7 +952,7 @@ final class UsersThatHaveAMonthlySubscription
 {
     public function __construct(EntityManagerInterface $em) { ... }
 
-    public function __invoke()
+    public function __invoke() : Traversable
     {
         // ... INSERT DQL/SQL HELL HERE ...
     }
@@ -1013,7 +1013,7 @@ final class BlogPostRepository
 {
     // ...
 
-    public function getBySlug($slug)
+    public function getBySlug($slug) : BlogPost
     {
         $found = $this->findOneBy(['slug' => (string) $slug]);
 
