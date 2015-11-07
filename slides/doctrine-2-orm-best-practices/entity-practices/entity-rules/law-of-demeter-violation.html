@@ -2,7 +2,7 @@
 class User
 {
     // ...
-    public function hasAccessTo($resource)
+    public function hasAccessTo(Resource $resource)
     {
         return (bool) array_filter(
             $this->role->getAccessLevels(),
