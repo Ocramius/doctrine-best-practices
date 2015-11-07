@@ -6,8 +6,11 @@ class PrivateMessage
     private $message;
     private $read = [];
 
-    public function __construct(User $from, User $to, $message)
-    {
+    public function __construct(
+        User $from,
+        User $to,
+        string $message
+    ) {
         // ...
     }
 
