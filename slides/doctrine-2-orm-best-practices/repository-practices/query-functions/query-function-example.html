@@ -3,7 +3,7 @@ final class UsersThatHaveAMonthlySubscription
 {
     public function __construct(EntityManagerInterface $em) { ... }
 
-    public function __invoke()
+    public function __invoke() : Traversable
     {
         // ... INSERT DQL/SQL HELL HERE ...
     }
