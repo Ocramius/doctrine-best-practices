@@ -2,7 +2,7 @@
 class User
 {
     // ...
-    public function hasAccessTo(Resource $resource)
+    public function hasAccessTo(Resource $resource) : bool
     {
         return $this->role->allowsAccessTo($resource);
     }
