@@ -209,6 +209,7 @@
 <p class="fragment">
     That's what
     <abbr title="Structured Query Language" class="zf-color">SQL</abbr>
+    is for
 </p>
 
 <p class="fragment">
@@ -322,6 +323,27 @@ class User
                 
                     
                         <section><h2><span class="doctrine-color">Entities</span> have <span class="zf-color">Behavior</span></h2></section>
+
+                    
+                    
+                
+                    
+                        <section><h2>
+    <span class="doctrine-color">Entity</span>
+    <br/>
+    internal <span class="php-color">State design</span>
+    <br/>
+    <strong>is Irrelevant</strong>
+</h2>
+
+<p class="fragment">
+    You can deal with <span class="php-color">state</span> <strong>after</strong> designing the <span class="zf-color">API</span>
+</p>
+
+<p class="fragment">
+    Designing <span class="php-color">State-first</span> leads to <strong>terrible</strong> <span class="php-color">coupling</span>
+</p>
+</section>
 
                     
                     
@@ -515,6 +537,8 @@ public function banUser($userId)
 </h2>
 
 <p class="fragment">(Regardless of the <abbr title="Data Transfer Object" class="php-color">DB</abbr>)</p>
+
+<p class="fragment"><span class="doctrine-color">Named constructors</span> are <strong>OK</strong></p>
 </section>
 
                     
@@ -692,7 +716,10 @@ public function __construct()
                     
                 
                     
-                        <section><h2><strong>Favour</strong> <span class="doctrine-color">immutable</span> entities</h2></section>
+                        <section><h2><strong>Favour</strong> <span class="doctrine-color">immutable</span> entities</h2>
+
+<p class="fragment">Or <span class="doctrine-color">append-only</span> data-structures</p>
+</section>
 
                     
                     
