@@ -10,12 +10,12 @@ class User
         return $this->username;
     }
 
-    public function authenticate($pass, callable $hashCheck) : bool {
+    public function authenticate(string $pass, callable $hashCheck) : bool {
         return $hashCheck($pass, $this->passwordHash)
             && ! $this->hasActiveBans();
     }
 
-    public function changePassword($pass, callable $hashingAlgo) {
+    public function changePassword(string $pass, callable $hashingAlgo) {
         $this->passwordHash = $hashingAlgo($pass);
     }
 }
