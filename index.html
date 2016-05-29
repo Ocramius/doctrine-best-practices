@@ -291,7 +291,7 @@
                         <section><pre><code data-trim>
 class User {
     private $username;
-    private $password;
+    private $passwordHash;
 
     public function getUsername() :string {
         return $this->username;
@@ -301,15 +301,16 @@ class User {
         $this->username = $username;
     }
 
-    public function getPassword() : string {
-        return $this->password;
+    public function getPasswordHash() : string {
+        return $this->passwordHash;
     }
 
-    public function setPassword(string $password) {
-        $this->password = $password;
+    public function setPasswordHash(string $passwordHash) {
+        $this->passwordHash = $passwordHash;
     }
 }
-</code></pre></section>
+</code></pre>
+</section>
 
                     
                     
@@ -1211,7 +1212,10 @@ final class BlogPostRepository
                 
                     
                         <section><h2>Thanks!</h2>
-</section>
+<img
+    src="assets/img/rick.png"
+    alt="qr code"
+/></section>
 
                     
                     
